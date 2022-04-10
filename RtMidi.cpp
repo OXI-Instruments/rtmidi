@@ -3006,7 +3006,7 @@ void MidiOutWinMM :: sendMessage( const unsigned char *message, size_t size )
 
   MMRESULT result;
   WinMidiData *data = static_cast<WinMidiData *> (apiData_);
-  if ( message[0] == 0xF0 ) { // Sysex message
+  if ( message[0] == 0xF0 || nBytes > 3 ) { // Sysex message
 
     // Allocate buffer for sysex data.
     char *buffer = (char *) malloc( nBytes );
